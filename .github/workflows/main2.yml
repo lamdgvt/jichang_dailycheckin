@@ -2,7 +2,7 @@ name: "Airport Checkin"
 
 on:
   schedule:
-    - cron: "0 22 * * *"  # scheduled at 06:00 (UTC+8) everyday
+    - cron: "0 11 * * *"  # scheduled at 06:00 (UTC+8) everyday
   workflow_dispatch:
 
 env:
@@ -36,7 +36,8 @@ jobs:
       - name: Run sign
         env:
           SCKEY: ${{ secrets.SCKEY }}
-          EMAIL: ${{ secrets.EMAIL }}
-          PASSWD: ${{ secrets.PASSWD }}
+          EMAIL: ${{ vars.EMAIL2 }}
+          PASSWD: ${{ vars.PASSWD }}
+          HOST: ${{ vars.HOST }}
         run: |
           python3 ./main.py
